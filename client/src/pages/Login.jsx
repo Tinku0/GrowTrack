@@ -1,5 +1,5 @@
 // Uncontrolled form approach
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Lineicons } from "@lineiconshq/react-lineicons";
 import { EyeSolid, EyeStroke } from "@lineiconshq/free-icons";
 import { useState } from 'react';
@@ -9,6 +9,7 @@ import { signInUser } from '../api/user.api';
 const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const login = async (event) => {
     event.preventDefault();
@@ -19,6 +20,9 @@ const Login = () => {
     try {
       const response = await signInUser(data);
       console.log(response.data)
+      if(response.data.success){
+        navigate('/dashboard')
+      }
     } catch (error) {
       console.log(error)
     }

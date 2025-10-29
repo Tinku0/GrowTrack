@@ -24,7 +24,7 @@ const signInUser = async (req, res) => {
     try {
         const user = await User.findOne({ username: username })
         if(user.password === password){
-            res.status(200).json({ message: 'Sign in succesfull', user: user });
+            res.status(200).json({ success: true, message: 'Sign in succesfull', user: user });
         }else{
             res.status(500).json({ message: 'Incorrect credentials' })
         }
