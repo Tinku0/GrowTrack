@@ -1,6 +1,7 @@
 // Controlled form approach
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const Register = () => {
   const register = (e) => {
     e.preventDefault();
     console.log(formData);
+    axios.post('http://localhost:5000/user/create', formData).then((res) => console.log(res))
   };
 
   return (
