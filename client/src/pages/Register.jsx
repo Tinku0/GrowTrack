@@ -30,7 +30,7 @@ const Register = () => {
               placeholder="Username"
               value={formData.username}
               onChange={handleChange}
-              className="bg-gray-200 p-2 rounded-sm"
+              className="bg-gray-200 p-2 rounded-sm focus:outline-none"
             />
             <input
               name="password"
@@ -38,7 +38,7 @@ const Register = () => {
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              className="bg-gray-200 p-2 rounded-sm"
+              className="bg-gray-200 p-2 rounded-sm focus:outline-none"
             />
             <div className="flex items-center">
               <button
