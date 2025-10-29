@@ -16,7 +16,7 @@ const Register = () => {
   const register = (e) => {
     e.preventDefault();
     console.log(formData);
-    axios.post('http://localhost:5000/user/create', formData).then((res) => console.log(res))
+    axios.post('http://localhost:5000/user/signup', formData).then((res) => console.log(res))
   };
 
   return (

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Lineicons } from "@lineiconshq/react-lineicons";
 import { EyeSolid, EyeStroke } from "@lineiconshq/free-icons";
 import { useState } from 'react';
+import axios from 'axios';
  
 const Login = () => {
 
@@ -12,6 +13,7 @@ const Login = () => {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
+    axios.post('http://localhost:5000/user/signin', data).then((res) => console.log(res))
   };
 
   return (
