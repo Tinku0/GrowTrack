@@ -3,17 +3,23 @@ import { Link } from 'react-router-dom';
 import { Lineicons } from "@lineiconshq/react-lineicons";
 import { EyeSolid, EyeStroke } from "@lineiconshq/free-icons";
 import { useState } from 'react';
-import axios from 'axios';
+import { signInUser } from '../api/user.api';
+// import axios from 'axios';
  
 const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
-  const login = (event) => {
+
+  const login = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
-    axios.post('http://localhost:5000/user/signin', data).then((res) => console.log(res))
+    try {
+      const response = await signInUser(data);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (

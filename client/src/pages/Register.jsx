@@ -1,7 +1,7 @@
 // Controlled form approach
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import { signUpUser } from "../api/user.api";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -13,10 +13,14 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const register = (e) => {
+  const register = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    axios.post('http://localhost:5000/user/signup', formData).then((res) => console.log(res))
+    try {
+      const response = await signUpUser(formData);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
