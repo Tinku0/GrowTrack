@@ -1,7 +1,11 @@
 const User = require("../models/user")
 
-const createUser = async (req, res) => {
+const signUpUser = async (req, res) => {
     const { username, password } = req.body;
+    const isUserExists = await User.find({username: username});
+    if(isUserExists){
+        return res.status(500).json({ message: 'Username exists already' })
+    }
     try {
         const user = new User({ username: username, password: password  });
         await user.save();
@@ -11,4 +15,22 @@ const createUser = async (req, res) => {
     }
 }
 
-module.exports = { createUser };
+const signInUser = async (req, res) => {
+    const { username, password } = req.body;
+    const isUserExists = await User.findOne({username: username});
+    if(!isUserExists){
+        return res.status(500).json({ message: 'User does not exist' })
+    }
+    try {
+        const user = await User.findOne({ username: username })
+        if(user.password === password){
+            res.status(200).json({ message: 'Sign in succesfull', user: user });
+        }else{
+            res.status(500).json({ message: 'Incorrect credentials' })
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = { signUpUser, signInUser };
