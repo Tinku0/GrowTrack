@@ -14,6 +14,8 @@ const Login = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
+    const { username, password } = data;
+    if(!username || !password) return
     try {
       const response = await signInUser(data);
       console.log(response.data)

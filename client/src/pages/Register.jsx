@@ -15,6 +15,8 @@ const Register = () => {
 
   const register = async (e) => {
     e.preventDefault();
+    const { username, password } = formData;
+    if(!username || !password) return
     try {
       const response = await signUpUser(formData);
       console.log(response.data)
