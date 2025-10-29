@@ -11,7 +11,7 @@ const signUpUser = async (req, res) => {
         await user.save();
         res.status(201).json({ message: 'User created succesfully', user: user });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ message: 'Something went wrong', error: error })
     }
 }
 
@@ -29,7 +29,7 @@ const signInUser = async (req, res) => {
             res.status(500).json({ message: 'Incorrect credentials' })
         }
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ message: 'Something went wrong', error: error })
     }
 }
 
