@@ -66,7 +66,7 @@ const SidebarLayout = () => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto nature-bg">
           <Outlet />
         </main>
       </div>

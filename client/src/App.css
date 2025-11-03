@@ -1,0 +1,8 @@
+.nature-bg{
+    background-image: url(./assets/nature.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding: 20px;
+}
